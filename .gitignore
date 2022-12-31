@@ -1,1 +1,2 @@
-config.php
+# Ignore config file
+app/config/config.php
