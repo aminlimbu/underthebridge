@@ -29,7 +29,7 @@
         }
 
         public function bind($param, $value, $type=null){
-            if(isset($type)){
+            if(is_null($type)){
                 switch(true){
                     case is_int($value):
                         $type = PDO::PARAM_INT;
@@ -45,7 +45,7 @@
                         break;
                 }
             }
-            $this->stmt->bind($param, $value, $type);
+            $this->stmt->bindvalue($param, $value, $type);
         }
 
         public function execute(){
