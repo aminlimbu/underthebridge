@@ -28,7 +28,8 @@
     background-size: cover;
     background-position: center;
     min-height: 60vh;
-
+    position: relative;
+    overflow: hidden;
 }
 
 .color-overlay{
@@ -74,7 +75,7 @@ video{
 }
 
 .seaquotes{
-   
+   color: white;
 }
 @media(max-width: 768px){
     .banner{

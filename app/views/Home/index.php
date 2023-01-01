@@ -3,7 +3,7 @@
        <div class="color-overlay">
         <div class="hero-title">
             <h1 class="display-5"><?php echo $data['title'];?></h1>
-            <p class="lead"><?php echo $data['description']?></p>
+            <p class="lead col-10"><?php echo $data['description']?></p>
         </div>
         </div>
     </div>
