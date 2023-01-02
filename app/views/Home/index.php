@@ -9,7 +9,7 @@
     </div>
     <div class="hbdawn">
             
-            <div class="color-overlay60">
+            <div class="color-overlay60 seaquotes d-flex justify-content-center align-items-center">
                 Tranquality
             </div>
     </div>
@@ -17,7 +17,10 @@
         <video playsinline autoplay muted loop>
             <source src="<?php echo URLROOT . '/media/shb.mp4'?>">
         </video>
-        <div class="color-overlay60"><span class="seaquotes text-primary"></span></div>
+        <div class="color-overlay60 seaquotes text-light d-flex flex-column justify-content-center align-items-center">
+            <div class="d-block m-2"><?php echo $data['quotes'] . '<br>';?><br></div>
+            <div class="lead dim d-block">source: api-ninjas</div>
+        </div>
     </div>
     <div class="hbfire">
             <div class="color-overlay60">
