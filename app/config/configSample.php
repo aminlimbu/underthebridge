@@ -8,4 +8,6 @@
     define('APPROOT', dirname(dirname(__FILE__)));
     define('URLROOT', 'liveURLaddressHere');
     define('SITENAME', 'underthebridge');
+    define('NINJAPI', 'XXNXXIXXNXXJXXAXXSXX');
+
 ?>

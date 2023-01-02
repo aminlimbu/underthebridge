@@ -19,12 +19,10 @@ class Home extends Controller{
 
     public function getQuotes(){
         $url = 'https://api.api-ninjas.com/v1/quotes?category=happiness';
-        // $collectionName = '?category=';
-        // $request = $url . '/' . $collectionName;
 
         // Initialise new CURL session
         $curl = curl_init($url);
-        // Setup options
+        // Setup cURL options
         curl_setopt_array($curl, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST => "GET",
@@ -34,9 +32,11 @@ class Home extends Controller{
         ],
         ]);
 
+        // execute cURL and store values to response
         $response = curl_exec($curl);
         $err = curl_error($curl);
         
+        // Error handling; decode json data; return quote
         if($err){
             echo "cURL Error: " .$err;
         }else{
