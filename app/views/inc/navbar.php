@@ -15,10 +15,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <a class="nav-link text-light" href="#">Features</a>
-                    <a class="nav-link text-light" href="#">Enterprise</a>
-                    <a class="nav-link text-light" href="#">Support</a>
-                    <a class="nav-link text-light" href="#">Pricing</a>
+                    <a class="nav-link text-light" href="<?php echo URLROOT . '/Blogs';?>">Blogs</a>
+                    <a class="nav-link text-light" href="#">About</a>
+                    <a class="nav-link text-light" href="#">Login</a>
+                    <a class="nav-link text-light" href="#"></a>
                 </ul>
             </div>    
     </div>

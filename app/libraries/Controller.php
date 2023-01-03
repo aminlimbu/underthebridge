@@ -10,7 +10,7 @@
             // require the model file
             require_once '../app/models/' . $model . '.php';
             // instantiate respecitev model
-            $this->model = new $modle;
+            return new $model();
         }
         // Load view
         public function view($view, $data = []){
