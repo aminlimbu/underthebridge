@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php';?>
-<div class="mx-5">
+<div class="mt-5 mx-5">
 <div class="row mt-5 mb-3">
     <div class="col-md-6">
         <h1>Blogs</h1>
