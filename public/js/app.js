@@ -11,3 +11,5 @@ window.addEventListener('scroll', function(){
         navbar.classList.remove("transblack");
     }
 });
+
+console.log('working');
