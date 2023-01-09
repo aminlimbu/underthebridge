@@ -87,6 +87,21 @@ video{
    font-size: 2rem;
    font-family: 'Poppins', sans-serif;
 }
+
+.backToTop{
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    display: none;
+}
+.backToTopShow{
+    position: fixed;
+    font-size: 3rem;
+    right: 2rem;
+    bottom: 2rem;
+    color: rgba(80, 65, 42, .7);
+}
+
 @media(max-width: 768px){
     .banner{
         min-height: 60vh;

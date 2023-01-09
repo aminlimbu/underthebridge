@@ -4,7 +4,7 @@
         <?php flash('register_success'); ?>
         <h2>Login</h2>
         <p>Please fill your credentials.</p>
-        <form action="<?php echo URLROOT . '/users/login'; ?>" class="m-5" method='post'>
+        <form action="<?php echo URLROOT . '/users/login'; ?>" class="" method='post'>
             <div class="form-group">
                 <label for="email">Email: </label>
                 <input type='email' name="email" class="form-control bg-transparent <?php echo (!empty($data['email_err']) ? 'is-invalid' : ''); ?>" value="<?php echo $data['email']; ?>">
