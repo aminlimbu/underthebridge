@@ -1,4 +1,5 @@
 <?php
+    // config files defines commonly used varaibles
     require_once ('config/config.php');
 
     // Load Helpers
