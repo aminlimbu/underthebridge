@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php';?>
+
     <div class="banner">
        <div class="color-overlay">
         <div class="hero-title">
@@ -8,7 +9,6 @@
         </div>
     </div>
     <div class="hbdawn">
-            
             <div class="color-overlay60 seaquotes d-flex justify-content-center align-items-center">
                 Tranquality
             </div>
@@ -24,7 +24,6 @@
     </div>
     <div class="hbfire">
             <div class="color-overlay60">
-
             New Year
             </div>
     </div>
