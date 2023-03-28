@@ -1,7 +1,7 @@
 # underthebridge
 
 A simple MVC framework using PHP and Bootstrap.
--Features
+- Features
   - Blog post
     - Add Post
   - User Login and registration
