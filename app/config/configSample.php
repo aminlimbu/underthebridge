@@ -8,6 +8,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
     define('URLROOT', 'liveURLaddressHere');
     define('SITENAME', 'underthebridge');
+    // replace API key from Ninja Api below
     define('NINJAPI', 'XXNXXIXXNXXJXXAXXSXX');
 
 ?>
