@@ -1,4 +1,9 @@
+<!-- APPROOT and URLROOT defined in /app/config -->
+<!-- The form submits to login, that instantiate login controller and model -->
+<!-- Authenticate username, password and start session -->
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <div class="row vh-100 justify-content-center align-items-center">
     <div class="col-md-6 card bg-secondary h-50 justify-content-center align-items-center rounded-3 shadow">
         <?php flash('register_success'); ?>
@@ -26,4 +31,5 @@
         </form>
     </div>
 </div>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
