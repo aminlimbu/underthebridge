@@ -1,5 +1,5 @@
 
-// Navbar background on scroll
+// Change Navbar background on scroll
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener('scroll', function(){
@@ -16,8 +16,10 @@ window.addEventListener('scroll', function(){
 // Back to top button
 var btnClass = document.getElementById('backTop');
 
+// add event listener on scroll
 document.addEventListener('scroll', handleScroll);
 
+// display only after certain scroll towards y-axis
 function handleScroll(){
     if(window.scrollY > 500){
         btnClass.classList.add('backToTopShow')
