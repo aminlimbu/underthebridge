@@ -1,3 +1,5 @@
+<!-- SITENAME, RULROOT and APPROOT are variable defined in /app/config -->
+<!-- Partial: Header -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
