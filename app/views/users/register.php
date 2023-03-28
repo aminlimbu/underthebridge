@@ -1,4 +1,11 @@
+<!-- form submits to register, register controller and model -->
+<!-- validates inputs and checks duplicate username -->
+<!-- pre-polulate fields on error -->
+<!-- errors are displayed below inputfields -->
+<!-- successful submission populated database with new user details -->
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <div class="container-fluid">
     <div class="row vh-100 justify-content-center align-items-center">
         <div class="col-md-6">
@@ -40,4 +47,5 @@
         </div>
     </div>
 </div>
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>
