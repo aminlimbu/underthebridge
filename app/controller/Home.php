@@ -1,22 +1,24 @@
 <?php
 // Home page controller
 class Home extends Controller{
-    // Construct method
+    // Constructor method
     public function __construct(){
 
     }
-    // Additional methods
+    // Index methods
     public function index(){
-        // properties
+        // index page data
         $data = [
             'title' => 'Welcome to <span style="font-family: \'Righteous\', cursive;">Under</span> <span class="bg-secondary rounded p-2">The Bridge</span>',
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex modi atque repudiandae beatae. Quas cupiditate aliquid corrupti eum officia consectetur voluptas cum perspiciatis, porro quaerat soluta esse placeat maxime quisquam.',
             'quotes' => $this->getQuotes()
         ];
-        // view
+        // load view with data
         $this->view('Home/index', $data);
     }
-
+    
+    // this function consumes API from api-ninjas.com
+    // It might require API key which can be update in config file ('NINJAPI')
     public function getQuotes(){
         $url = 'https://api.api-ninjas.com/v1/quotes?category=happiness';
 
