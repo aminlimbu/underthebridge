@@ -2,13 +2,17 @@
 class Users extends Controller
 {
     private $userModel;
+    // constructor funciton, load userModel on initiation
     public function __construct()
     {
         $this->userModel = $this->model('User');
     }
+    
+    // Register method
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitise inputs received from POST method
             $_POST = filter_input_array(htmlspecialchars(INPUT_POST));
             $data = [
                 'name' => trim($_POST['name']),
@@ -22,7 +26,7 @@ class Users extends Controller
                 'confirm_password_err' => ''
             ];
             
-            // Check if the fields is empty or already registered
+            // Validate form: check if the fields is empty, the user already registered and password
             if (empty('email')) {
                 $data['email_err'] = 'Pleaee enter your email address.';
             } else {
@@ -50,8 +54,9 @@ class Users extends Controller
             }
             // form validation end
             
-            // register user
+            // register user, populate database with new registerer
             if (empty($data['email_err'] && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err']))) {
+                // hashing password for security
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 if ($this->userModel->registerUser($data)) {
                     flash('register_success', 'You are registered successfulle.');
@@ -60,7 +65,7 @@ class Users extends Controller
                     die('Something went wrong, please try agina');
                 }
             } else {
-                // if error exist redirect with pre-filled data
+                // if error exist redirect to register page with pre-filled data
                 $this->view('users/register', $data);
             }
         } else {
@@ -80,11 +85,12 @@ class Users extends Controller
         }
     }
 
+    // Login Method
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
-            // Sanitise input data
+            // Sanitise input data from post method
             $_POST = filter_input_array(htmlspecialchars(INPUT_POST));
             
             // Store input data in an array
@@ -102,29 +108,31 @@ class Users extends Controller
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter your password.';
             }
-
+            
+            // check database for emailaddress
             if ($this->userModel->findUserByEmail($data['email'])) {
-                // user exist in the database
+                // user exist in the database, moves to next condition
             } else {
                 $data['email_err'] = 'No user found with the email address: ' . $data['email'];
             }
 
             // If no errors, login user
             if (empty($data['email_err']) && empty($data['password_err'])) {
-                // login returns row from database
+                // login and create session
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if ($loggedInUser) {
+                    // createUserSession creates user session and redirects to blog page
                     $this->createUserSession($loggedInUser);
                 } else {
                     $data['password_err'] = 'Password incorrect.';
                     $this->view('users/login', $data);
                 }
             } else {
-                // If error load view with data
+                // If error load login with prefilled data
                 $this->view('users/login', $data);
             }
         } else {
-            // if the method is not post, load view with reset data
+            // if the method is not post, load view with empty data
             $data = [
                 'email' => '',
                 'password' => '',
@@ -135,7 +143,7 @@ class Users extends Controller
         }
     }
     
-    // Updaates session file, used for login duration
+    // Updaates session file Function
     public function createUserSession($user)
     {
         $_SESSION['user_id'] = $user->id;
@@ -144,7 +152,8 @@ class Users extends Controller
         redirect('blogs');
     }
     
-    // unset session files
+    // Logout Method
+    // unset session files and redirect to login page
     public function logout()
     {
         unset($_SESSION['user_id']);
