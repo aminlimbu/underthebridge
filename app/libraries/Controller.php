@@ -7,11 +7,12 @@
     class Controller{
         // Load Model
         public function model($model){
-            // require the model file
+            // require the model file associated with model
             require_once '../app/models/' . $model . '.php';
-            // instantiate respecitev model
+            // instantiate respective model
             return new $model();
         }
+        
         // Load view
         public function view($view, $data = []){
             // check if the view file exist
