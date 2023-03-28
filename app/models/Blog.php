@@ -3,10 +3,12 @@
 class Blog{
     private $db;
 
+    // constructor function, instantiate new database
     public function __construct(){
         $this->db = new Database;
     }
 
+    // GetBlogs method, join two tables (users and blogs) and fetch data
     public function getBlogs(){
         $this->db->query('SELECT *,
             blogs.id as blogId,
@@ -22,6 +24,7 @@ class Blog{
         return $this->db->fetchAll();
     }
 
+    // AddBlog Method, populate database with new data
     public function addBlog($data){
         $this->db->query('INSERT INTO blogs(title, user_id, body) VALUES (:title, :user_id, :body)');
 
@@ -30,7 +33,7 @@ class Blog{
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':body', $data['body']);
 
-        // Execute query with bind values; update in database
+        // Execute query with bind values; update database
         if($this->db->execute()){
             return true;
         } else {
