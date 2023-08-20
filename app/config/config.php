@@ -1,7 +1,7 @@
 <?
 
 // Define Global Varaibles
-    define('DB_HOST', '[localhost]');
+    define('DB_HOST', $_ENV['HOST_ENV']);
     define('DB_NAME', '[databaseName]');
     define('DB_USER', '[databaseUserName]');
     define('DB_PASS', '[databasePassword]');
