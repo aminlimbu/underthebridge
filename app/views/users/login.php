@@ -5,7 +5,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <div class="row vh-100 justify-content-center align-items-center">
-    <div class="col-md-6 card bg-secondary h-50 justify-content-center align-items-center rounded-3 shadow">
+    <div class="col-md-6 card bg-light h-50 justify-content-center align-items-center rounded-3 shadow">
         <?php flash('register_success'); ?>
         <h2>Login</h2>
         <p>Please fill your credentials.</p>
