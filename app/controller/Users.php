@@ -26,7 +26,7 @@ class Users extends Controller
                 'confirm_password_err' => ''
             ];
 
-            // Validate form: check if the fields is empty, the user already registered and password
+            // Validate form: check if the fields are empty, the user is already registered and password
             if (empty('email')) {
                 $data['email_err'] = 'Pleaee enter your email address.';
             } else {
@@ -54,7 +54,7 @@ class Users extends Controller
             }
             // form validation end
 
-            // register user, populate database with new registerer
+            // register user, populate the database with new registerer
             if (empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 // hashing password for security
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -62,14 +62,14 @@ class Users extends Controller
                     flash('register_success', 'You are registered successfully.');
                     redirect('users/login');
                 } else {
-                    die('Something went wrong, please try agina');
+                    die('Something went wrong, please try again.');
                 }
             } else {
-                // if error exist redirect to register page with pre-filled data
+                // if error, redirect to the registration page with pre-filled data
                 $this->view('users/register', $data);
             }
         } else {
-            // if the method is not post, reset data and redirect to register page
+            // If the method is not POST, reset data and redirect to the registration page
             $data = [
                 'name' => '',
                 'lname' => '',
@@ -109,9 +109,9 @@ class Users extends Controller
                 $data['password_err'] = 'Please enter your password.';
             }
 
-            // check database for emailaddress
+            // Check database for email address
             if ($this->userModel->findUserByEmail($data['email'])) {
-                // user exist in the database, moves to next condition
+                // If a user exists in the database, move to the next condition
             } else {
                 $data['email_err'] = 'No user found with the email address: ' . $data['email'];
             }
@@ -121,18 +121,18 @@ class Users extends Controller
                 // login and create session
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if ($loggedInUser) {
-                    // createUserSession creates user session and redirects to blog page
+                    // createUserSession creates a new user session and redirects to blog page
                     $this->createUserSession($loggedInUser);
                 } else {
                     $data['password_err'] = 'Password incorrect.';
                     $this->view('users/login', $data);
                 }
             } else {
-                // If error load login with prefilled data
+                // If error, load a login page with prefilled data
                 $this->view('users/login', $data);
             }
         } else {
-            // if the method is not post, load view with empty data
+            // If the method is not POST, load a view with empty fields
             $data = [
                 'email' => '',
                 'password' => '',
@@ -153,7 +153,7 @@ class Users extends Controller
     }
 
     // Logout Method
-    // unset session files and redirect to login page
+    // unset session files and redirect to a login page
     public function logout()
     {
         unset($_SESSION['user_id']);
