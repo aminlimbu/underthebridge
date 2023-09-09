@@ -4,28 +4,29 @@
 
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<div class="row vh-100 justify-content-center align-items-center">
-    <div class="col-md-6 card bg-light h-50 justify-content-center align-items-center rounded-3 shadow">
+<div class="d-flex flex-column justify-content-center align-items-center row vh-100 mt-5">
+    <div class="d-flex flex-column justify-content-center align-items-center rounded-3 shadow bg-dark text-light mt-5 p-3">
         <?php flash('register_success'); ?>
         <h2>Login</h2>
-        <p>Please fill your credentials.</p>
-        <form action="<?php echo URLROOT . '/users/login'; ?>" class="" method='post'>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input type='email' name="email" class="form-control bg-transparent <?php echo (!empty($data['email_err']) ? 'is-invalid' : ''); ?>" value="<?php echo $data['email']; ?>">
+        <p clas="text-muted">Please fill your login-credentials.</p>
+        <form action="<?php echo URLROOT . '/users/login'; ?>" method='post'>
+            <fieldset class="mb-5">
+                <legend>Email & Password</legend>
+            <div class="form-group mb-2">
+                <input type='email' name="email" class="form-control bg-transparent <?php echo (!empty($data['email_err']) ? 'is-invalid' : ''); ?>" value="<?php echo $data['email']; ?>" placeholder="john@mail.com" required>
                 <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
             </div>
             <div class="form-group">
-                <label for="password">Password: </label>
-                <input type="password" class="form-control bg-transparent <?php echo (!empty($data['password_err']) ? 'is-invalid' : ''); ?>" name="password" value="<?php echo $data['password']; ?>">
+                <input type="password" class="form-control bg-transparent <?php echo (!empty($data['password_err']) ? 'is-invalid' : ''); ?>" name="password" value="<?php echo $data['password']; ?>" placeholder="******" required>
                 <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
             </div>
+            </fieldset>
             <div class="form-group">
-                <div class="col">
-                    <input type="submit" class="form-control btn btn-primary mt-5" value="Login">
+                <div class="mb-3">
+                    <input type="submit" class="form-control btn btn-primary" value="Login">
                 </div>
-                <div class="col">
-                    <p class="mt-2">Not registered, yet? <a href="<?php echo URLROOT . '/users/register'; ?>">Register now.</a></p>
+                <div>
+                    <p class="text-muted">Not registered, yet? <a href="<?php echo URLROOT . '/users/register'; ?>" class="text-decoration-none">Register now.</a></p>
                 </div>
             </div>
         </form>
