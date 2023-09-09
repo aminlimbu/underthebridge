@@ -7,7 +7,7 @@ class Users extends Controller
     {
         $this->userModel = $this->model('User');
     }
-    
+
     // Register method
     public function register()
     {
@@ -25,26 +25,26 @@ class Users extends Controller
                 'password_err' => '',
                 'confirm_password_err' => ''
             ];
-            
+
             // Validate form: check if the fields is empty, the user already registered and password
             if (empty('email')) {
                 $data['email_err'] = 'Pleaee enter your email address.';
             } else {
                 if ($this->userModel->findUserByEmail($data['email'])) {
-                    $data['email_err'] = 'You have already registered before';
+                    $data['email_err'] = 'This email is already registered.';
                 }
             }
-            
+
             if (empty('name')) {
                 $data['name_err'] = 'Please enter your name';
             }
-            
+
             if (empty('password')) {
                 $data['password_err'] = 'Please enter passwrod';
             } elseif (strlen($data['password']) < 6) {
                 $data['password_err'] = 'Password must be at least 6 character long.';
             }
-            
+
             if (empty($data['confirm_password'])) {
                 $data['confirm_password_err'] = 'Please confirm your password.';
             } else {
@@ -53,13 +53,13 @@ class Users extends Controller
                 }
             }
             // form validation end
-            
+
             // register user, populate database with new registerer
-            if (empty($data['email_err'] && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err']))) {
+            if (empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 // hashing password for security
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 if ($this->userModel->registerUser($data)) {
-                    flash('register_success', 'You are registered successfulle.');
+                    flash('register_success', 'You are registered successfully.');
                     redirect('users/login');
                 } else {
                     die('Something went wrong, please try agina');
@@ -89,10 +89,10 @@ class Users extends Controller
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+
             // Sanitise input data from post method
             $_POST = filter_input_array(htmlspecialchars(INPUT_POST));
-            
+
             // Store input data in an array
             $data = [
                 'email' => trim($_POST['email']),
@@ -100,7 +100,7 @@ class Users extends Controller
                 'email_err' => '',
                 'password_err' => '',
             ];
-            
+
             // Form validation
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter your email address.';
@@ -108,7 +108,7 @@ class Users extends Controller
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter your password.';
             }
-            
+
             // check database for emailaddress
             if ($this->userModel->findUserByEmail($data['email'])) {
                 // user exist in the database, moves to next condition
@@ -142,7 +142,7 @@ class Users extends Controller
             $this->view('users/login', $data);
         }
     }
-    
+
     // Updaates session file Function
     public function createUserSession($user)
     {
@@ -151,7 +151,7 @@ class Users extends Controller
         $_SESSION['user_name'] = $user->first_name;
         redirect('blogs');
     }
-    
+
     // Logout Method
     // unset session files and redirect to login page
     public function logout()
