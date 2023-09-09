@@ -25,7 +25,7 @@ class Blog{
     }
 
     // AddBlog Method, populate database with new data
-    public function addBlog($data){
+    public function add($data){
         $this->db->query('INSERT INTO blogs(title, user_id, body) VALUES (:title, :user_id, :body)');
 
         // bind values
@@ -41,4 +41,3 @@ class Blog{
         }
     }
 }
-?>

@@ -1,7 +1,7 @@
 <?
 
 // Define Global Varaibles
-    define('DB_HOST', $_ENV['HOST_ENV']);
+    define('DB_HOST', '[hostname]');
     define('DB_NAME', '[databaseName]');
     define('DB_USER', '[databaseUserName]');
     define('DB_PASS', '[databasePassword]');
@@ -15,5 +15,3 @@
 
     // replace API key from Ninja Api below
     define('NINJAPI', '[XXNXXIXXNXXJXXAXXSXX]');
-
-?>

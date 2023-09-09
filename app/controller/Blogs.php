@@ -27,9 +27,9 @@
                 
                 // created associated array from data received from POST method
                 $data = [
-                    'title' => trim($_POST('title')),
-                    'body' => trim($_POST('body')),
                     'user_id' => $_SESSION['user_id'],
+                    'title' => trim($_POST['title']),
+                    'body' => trim($_POST['body']),
 
                     // error handling variables
                     'title_err' => '',
@@ -43,11 +43,11 @@
 
                 // Validate body (content)
                 if(empty($data['body'])){
-                    $body['body_err'] = 'Blog body cannot be empty';
+                    $data['body_err'] = 'Blog body cannot be empty';
                 }
                 
                 // populate database with new contents
-                if(empty($data['title_err']) && empty($data['title_err'])){
+                if(empty($data['body_err']) && empty($data['title_err'])){
                     if($this->blogModel->addBlog($data)){
                         flash('blog_message', 'Blog Added');
                         redirect('blogs');
@@ -69,4 +69,3 @@
             }
         }
     }
-?>
